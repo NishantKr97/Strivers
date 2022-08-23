@@ -1,0 +1,24 @@
+class Solution
+{
+public:
+    
+    void calculate(int index, vector<int> &arr, int N, vector<int> &ans, int sum) {
+        if(index == N) {
+            ans.push_back(sum);
+            return;
+        }
+        
+        calculate(index+1, arr, N, ans, sum + arr[index]);
+        calculate(index+1, arr, N, ans, sum);
+    }
+
+    vector<int> subsetSums(vector<int> arr, int N)
+    {
+        // Write Your Code here
+        vector<int> ans;
+        calculate(0, arr, N, ans, 0);
+        sort(ans.begin(), ans.end());
+        
+        return ans;
+    }
+};
